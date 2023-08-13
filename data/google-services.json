@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "398959850555",
+    "project_id": "unipi-vet-app",
+    "storage_bucket": "unipi-vet-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398959850555:android:68bfb5e7568784e7a3581e",
+        "android_client_info": {
+          "package_name": "com.stathis.data"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "398959850555-50ghhc5jfg6hatv2ts47bv39q5d0kv8t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCjDedbYHjRpXfWx4HMY5_Wk0CwpLbIkY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "398959850555-50ghhc5jfg6hatv2ts47bv39q5d0kv8t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
