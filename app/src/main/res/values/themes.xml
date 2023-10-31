@@ -13,4 +13,29 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="AppRecycler">
+        <item name="android:clipToPadding">false</item>
+        <item name="android:overScrollMode">never</item>
+        <item name="android:paddingBottom">@dimen/dimen_xl</item>
+    </style>
+
+    <style name="text_18_bold" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/text_18</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_18" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/text_18</item>
+    </style>
+
+    <style name="text_16" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/text_16</item>
+    </style>
+
+    <style name="text_16_bold" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/text_16</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.stathis.unipidoctor.ui.profile.adapter.ProfileCard" />
+
+        <variable
+            name="callback"
+            type="com.stathis.unipidoctor.ui.profile.adapter.ProfileScreenCallback" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_m"
+        android:onClick="@{() -> callback.onCardClick(model)}"
+        app:cardCornerRadius="@dimen/dimen_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/dimen_m">
+
+            <ImageView
+                android:id="@+id/cardImgView"
+                android:layout_width="@dimen/dimen_xl"
+                android:layout_height="@dimen/dimen_xl"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadIcon="@{model.icon}"
+                tools:background="@drawable/ic_location" />
+
+            <TextView
+                android:id="@+id/cardTxtView"
+                style="@style/text_18_bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_s"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/dimen_s"
+                android:text="@{model.text}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardImgView"
+                tools:text="stathis" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
