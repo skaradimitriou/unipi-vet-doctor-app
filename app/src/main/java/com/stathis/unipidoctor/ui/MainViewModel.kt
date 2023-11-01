@@ -1,4 +1,6 @@
 package com.stathis.unipidoctor.ui
 
-class MainViewModel {
+import androidx.lifecycle.ViewModel
+
+class MainViewModel : ViewModel() {
 }

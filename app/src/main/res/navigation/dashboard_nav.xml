@@ -3,11 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dashboard_nav"
-    app:startDestination="@id/profileFragment">
+    app:startDestination="@id/dashboardFragment">
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.stathis.unipidoctor.ui.dashboard.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.stathis.unipidoctor.ui.profile.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="com.stathis.unipidoctor.ui.address.AddressFragment"
+        android:label="fragment_address"
+        tools:layout="@layout/fragment_address" />
+
 </navigation>

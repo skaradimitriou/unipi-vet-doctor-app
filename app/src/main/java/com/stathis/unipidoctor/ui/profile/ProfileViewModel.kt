@@ -9,6 +9,7 @@ import com.stathis.unipidoctor.R
 import com.stathis.unipidoctor.abstraction.BaseViewModel
 import com.stathis.unipidoctor.di.IoDispatcher
 import com.stathis.unipidoctor.ui.profile.adapter.ProfileCard
+import com.stathis.unipidoctor.ui.profile.adapter.ProfileCardType
 import com.stathis.unipidoctor.ui.profile.adapter.ProfileHeader
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -36,15 +37,18 @@ class ProfileViewModel @Inject constructor(
                 ),
                 ProfileCard(
                     R.drawable.ic_location,
-                    "Address"
+                    "Address",
+                    ProfileCardType.ADDRESS
                 ),
                 ProfileCard(
                     R.drawable.ic_time,
-                    "Working hours"
+                    "Working hours",
+                    ProfileCardType.WORKING_HOURS
                 ),
                 ProfileCard(
                     R.drawable.ic_phone,
-                    "Contact info"
+                    "Contact info",
+                    ProfileCardType.CONTACT_INFO
                 )
             )
 

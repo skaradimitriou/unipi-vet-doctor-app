@@ -4,10 +4,17 @@ import com.stathis.domain.model.UiModel
 
 data class ProfileCard(
     val icon: Int,
-    val text: String
+    val text: String,
+    val type: ProfileCardType
 ) : UiModel {
     override fun equalsContent(obj: UiModel): Boolean = when (obj) {
-        is ProfileCard -> icon == obj.icon && text == obj.text
+        is ProfileCard -> icon == obj.icon && text == obj.text && type == obj.type
         else -> false
     }
+}
+
+enum class ProfileCardType {
+    ADDRESS,
+    WORKING_HOURS,
+    CONTACT_INFO
 }

@@ -7,57 +7,60 @@
 
         <variable
             name="model"
-            type="com.stathis.unipidoctor.ui.profile.adapter.ProfileHeader" />
+            type="com.stathis.unipidoctor.ui.dashboard.uimodel.DashboardHeader" />
+
+        <variable
+            name="callback"
+            type="com.stathis.unipidoctor.ui.dashboard.adapter.DashboardScreenCallback" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_300"
+        android:layout_height="wrap_content"
         android:background="@color/white">
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_xl"
+            android:layout_marginTop="@dimen/dimen_l"
             android:background="@drawable/round_corners_top"
             android:backgroundTint="@color/grey_bg"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/profileImgView" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profileImgView"
-            android:layout_width="@dimen/dimen_4xl"
-            android:layout_height="@dimen/dimen_4xl"
-            android:layout_marginTop="@dimen/dimen_l"
+            android:layout_width="@dimen/dimen_2xl"
+            android:layout_height="@dimen/dimen_2xl"
+            android:layout_margin="@dimen/dimen_m"
+            android:onClick="@{() -> callback.onProfileIconClick()}"
             android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:setProfileImage="@{model.imageUrl}"
             tools:src="@drawable/profile_placeholder" />
 
         <TextView
-            android:id="@+id/usernameTxtView"
-            style="@style/text_18_bold"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:padding="@dimen/dimen_s"
-            android:text="@{model.username}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profileImgView"
-            tools:text="stathis" />
-
-        <TextView
-            android:id="@+id/fullnameTxtView"
+            android:id="@+id/greetingTxtView"
             style="@style/text_18"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:paddingHorizontal="@dimen/dimen_s"
-            android:text="@{model.fullName}"
+            android:layout_marginStart="@dimen/dimen_s"
+            android:padding="@dimen/dimen_s"
+            android:text="Hello"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/usernameTxtView"
+            app:layout_constraintStart_toEndOf="@id/profileImgView"
+            app:layout_constraintTop_toTopOf="@id/profileImgView" />
+
+        <TextView
+            android:id="@+id/fullnameTxtView"
+            style="@style/text_18_bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/dimen_s"
+            android:text="@{model.username}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/greetingTxtView"
+            app:layout_constraintTop_toBottomOf="@id/greetingTxtView"
             tools:text="stathis" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
