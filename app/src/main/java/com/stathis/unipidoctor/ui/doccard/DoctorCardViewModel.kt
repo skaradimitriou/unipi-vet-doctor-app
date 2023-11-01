@@ -41,11 +41,18 @@ class DoctorCardViewModel @Inject constructor(
 
     fun generateQR() {
         viewModelScope.launch(dispatcher) {
-            val barcodeEncoder = BarcodeEncoder()
+            //FIXME: Replace fullname & phone number & email with doctor's values
+            val doctorContact = "BEGIN:VCARD\n" +
+                    "VERSION:3.0\n" +
+                    "FN:John Doe\n" + // Full name
+                    "TEL:1234567890\n" + // Phone number
+                    "EMAIL:john.doe@example.com\n" + // Email address
+                    // Add more fields as needed
+                    "END:VCARD"
 
-            //FIXME: Try to send a full contact to the QR parser later on
+            val barcodeEncoder = BarcodeEncoder()
             val bitmap = barcodeEncoder.encodeBitmap(
-                "https://www.google.com/search?q=stathis", BarcodeFormat.QR_CODE, 512, 512
+                doctorContact, BarcodeFormat.QR_CODE, 512, 512
             )
             _qr.postValue(bitmap)
         }
