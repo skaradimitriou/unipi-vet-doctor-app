@@ -18,6 +18,12 @@
         tools:layout="@layout/fragment_profile" />
 
     <fragment
+        android:id="@+id/doctorCardFragment"
+        android:name="com.stathis.unipidoctor.ui.doccard.DoctorCardFragment"
+        android:label="fragment_doctor_card"
+        tools:layout="@layout/fragment_doctor_card" />
+
+    <fragment
         android:id="@+id/addressFragment"
         android:name="com.stathis.unipidoctor.ui.address.AddressFragment"
         android:label="fragment_address"

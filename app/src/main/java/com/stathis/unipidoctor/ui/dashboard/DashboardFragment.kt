@@ -52,6 +52,6 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding>(R.layout.fragme
     }
 
     override fun onDoctorCardClick() {
-        //FIXME: Navigate to appropriate screen
+        sharedVM.navigateToScreen(NavigationAction.SHOW_DOCTOR_QR)
     }
 }
