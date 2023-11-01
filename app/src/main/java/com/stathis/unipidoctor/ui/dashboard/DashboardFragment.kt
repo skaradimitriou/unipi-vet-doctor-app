@@ -13,14 +13,14 @@ import com.stathis.unipidoctor.utils.decor.VerticalItemDecoration
 import com.stathis.unipidoctor.utils.removeItemDecorations
 import com.stathis.unipidoctor.utils.setScreenTitle
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class DashboardFragment : BaseFragment<FragmentDashboardBinding>(R.layout.fragment_dashboard),
     DashboardScreenCallback {
 
     private val viewModel: DashboardViewModel by viewModels()
-    private val sharedVM : MainSharedViewModel by activityViewModels()
+    private val sharedVM: MainSharedViewModel by activityViewModels()
+
     private val adapter = DashboardAdapter(this)
 
     override fun init() {
@@ -48,7 +48,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding>(R.layout.fragme
     }
 
     override fun onAppointmentsClick() {
-        //FIXME: Navigate to appropriate screen
+        sharedVM.navigateToScreen(NavigationAction.CALENDAR)
     }
 
     override fun onDoctorCardClick() {

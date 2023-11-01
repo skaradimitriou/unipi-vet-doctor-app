@@ -1,4 +1,4 @@
-package com.stathis.unipidoctor.ui.address
+package com.stathis.unipidoctor.ui.changeaddress
 
 import android.app.Application
 import com.stathis.unipidoctor.abstraction.BaseViewModel

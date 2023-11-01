@@ -1,4 +1,4 @@
-package com.stathis.unipidoctor.ui.address
+package com.stathis.unipidoctor.ui.changeaddress
 
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -20,10 +20,10 @@ class AddressFragment : BaseFragment<FragmentAddressBinding>(R.layout.fragment_a
     }
 
     override fun startOps() {
-
+        //
     }
 
     override fun stopOps() {
-
+        //
     }
 }

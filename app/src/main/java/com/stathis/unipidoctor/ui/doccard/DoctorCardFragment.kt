@@ -14,7 +14,6 @@ class DoctorCardFragment : BaseFragment<FragmentDoctorCardBinding>(R.layout.frag
 
     override fun init() {
         setScreenTitle("Share Doctor Card")
-        viewModel.generateQR()
     }
 
     override fun startOps() {

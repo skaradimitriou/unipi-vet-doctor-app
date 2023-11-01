@@ -52,6 +52,19 @@
                 app:layout_constraintTop_toBottomOf="@id/cardImgView"
                 tools:text="stathis" />
 
+            <TextView
+                android:id="@+id/cardDescTxtView"
+                style="@style/text_16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/dimen_s"
+                android:text="@{model.description}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardTxtView"
+                tools:text="stathis" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>

@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.zxing.BarcodeFormat
 import com.journeyapps.barcodescanner.BarcodeEncoder
+import com.stathis.domain.usecases.FetchDoctorInfoUseCase
 import com.stathis.unipidoctor.abstraction.BaseViewModel
 import com.stathis.unipidoctor.di.IoDispatcher
 import com.stathis.unipidoctor.ui.doccard.uimodel.DoctorCard
@@ -19,7 +20,8 @@ import javax.inject.Inject
 @HiltViewModel
 class DoctorCardViewModel @Inject constructor(
     app: Application,
-    @IoDispatcher private val dispatcher: CoroutineDispatcher
+    @IoDispatcher private val dispatcher: CoroutineDispatcher,
+    private val useCase: FetchDoctorInfoUseCase
 ) : BaseViewModel(app) {
 
     val doctorCard: LiveData<DoctorCard>
@@ -34,19 +36,18 @@ class DoctorCardViewModel @Inject constructor(
 
     fun getDoctorInfo() {
         viewModelScope.launch(dispatcher) {
-            val dummyDoctorCard = DoctorCard("", "Doctor Doctoropoulos")
+            val doctorInfo = useCase.invoke()
+            val dummyDoctorCard = DoctorCard(
+                imageUrl = doctorInfo.imageUrl,
+                fullName = doctorInfo.details.contact.telephone
+            )
             _doctorCard.postValue(dummyDoctorCard)
-        }
-    }
 
-    fun generateQR() {
-        viewModelScope.launch(dispatcher) {
-            //FIXME: Replace fullname & phone number & email with doctor's values
             val doctorContact = "BEGIN:VCARD\n" +
                     "VERSION:3.0\n" +
-                    "FN:John Doe\n" + // Full name
-                    "TEL:1234567890\n" + // Phone number
-                    "EMAIL:john.doe@example.com\n" + // Email address
+                    "FN:${doctorInfo.fullName}\n" + // Full name
+                    "TEL:${doctorInfo.details.contact.telephone}\n" + // Phone number
+                    "EMAIL:${doctorInfo.details.contact.email}\n" + // Email address
                     // Add more fields as needed
                     "END:VCARD"
 

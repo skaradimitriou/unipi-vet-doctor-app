@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.stathis.domain.model.UiModel
+import com.stathis.domain.usecases.FetchDoctorInfoUseCase
 import com.stathis.unipidoctor.abstraction.BaseViewModel
 import com.stathis.unipidoctor.di.IoDispatcher
 import com.stathis.unipidoctor.ui.dashboard.uimodel.DashboardCard
@@ -18,7 +19,8 @@ import javax.inject.Inject
 @HiltViewModel
 class DashboardViewModel @Inject constructor(
     app: Application,
-    @IoDispatcher private val dispatcher: CoroutineDispatcher
+    @IoDispatcher private val dispatcher: CoroutineDispatcher,
+    private val useCase: FetchDoctorInfoUseCase
 ) : BaseViewModel(app) {
 
     val data: LiveData<List<UiModel>>
@@ -26,15 +28,14 @@ class DashboardViewModel @Inject constructor(
 
     private val _data = MutableLiveData<List<UiModel>>()
 
-
     fun getData() {
         viewModelScope.launch(dispatcher) {
+            val doctorInfo = useCase.invoke()
             val list = listOf(
                 DashboardHeader(
-                    imageUrl = "",
-                    username = "myUsername"
-                ),
-                DashboardCard(
+                    imageUrl = doctorInfo.imageUrl,
+                    username = doctorInfo.username
+                ), DashboardCard(
                     title = "Today's appointments >",
                     subtitle = "You have 5 appointments for today."
                 ),

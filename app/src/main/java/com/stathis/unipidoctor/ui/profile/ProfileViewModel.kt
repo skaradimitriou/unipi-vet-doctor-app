@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.stathis.domain.model.UiModel
+import com.stathis.domain.usecases.FetchDoctorInfoUseCase
 import com.stathis.unipidoctor.R
 import com.stathis.unipidoctor.abstraction.BaseViewModel
 import com.stathis.unipidoctor.di.IoDispatcher
@@ -19,7 +20,8 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
     app: Application,
-    @IoDispatcher private val dispatcher: CoroutineDispatcher
+    @IoDispatcher private val dispatcher: CoroutineDispatcher,
+    private val useCase: FetchDoctorInfoUseCase
 ) : BaseViewModel(app) {
 
     val data: LiveData<List<UiModel>>
@@ -29,25 +31,29 @@ class ProfileViewModel @Inject constructor(
 
     fun getData() {
         viewModelScope.launch(dispatcher) {
+            val doctorInfo = useCase.invoke()
             val list = listOf(
                 ProfileHeader(
-                    "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.marvel.com%2Fcharacters%2Fthor-thor-odinson&psig=AOvVaw2RPWgEei8XY0KGLRzVJU62&ust=1698848586148000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCPCe-6W-oIIDFQAAAAAdAAAAABAE",
-                    "mydummyuser",
-                    "User Useropoulos",
+                    imageUrl = doctorInfo.imageUrl,
+                    username = doctorInfo.username,
+                    fullName = doctorInfo.fullName
                 ),
                 ProfileCard(
                     R.drawable.ic_location,
                     "Address",
+                    doctorInfo.details.address.toString(),
                     ProfileCardType.ADDRESS
                 ),
                 ProfileCard(
                     R.drawable.ic_time,
                     "Working hours",
+                    doctorInfo.details.workingHours.toString(),
                     ProfileCardType.WORKING_HOURS
                 ),
                 ProfileCard(
                     R.drawable.ic_phone,
                     "Contact info",
+                    doctorInfo.details.contact.toString(),
                     ProfileCardType.CONTACT_INFO
                 )
             )

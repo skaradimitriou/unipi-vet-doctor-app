@@ -2,7 +2,7 @@ package com.stathis.unipidoctor.navigation
 
 enum class NavigationAction {
     DASHBOARD,
-    CALENDAR_VIEW,
+    CALENDAR,
     PROFILE,
     SHOW_DOCTOR_QR,
     ADDRESS
