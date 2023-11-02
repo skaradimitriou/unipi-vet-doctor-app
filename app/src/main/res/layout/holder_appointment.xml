@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.stathis.domain.model.Appointment" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_10"
+        app:cardCornerRadius="@dimen/dimen_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/dimen_m">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/patientImgView"
+                android:layout_width="@dimen/dimen_2xl"
+                android:layout_height="@dimen/dimen_2xl"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setProfileImage="@{model.patientImage}"
+                tools:src="@drawable/profile_placeholder" />
+
+            <TextView
+                android:id="@+id/cardTitleTxtView"
+                style="@style/text_18_bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimen_s"
+                android:text="@{model.patientName}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/patientImgView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Patient Name Placeholder" />
+
+            <TextView
+                android:id="@+id/dateTxtView"
+                style="@style/text_18"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/dimen_s"
+                android:text="@{model.date}"
+                app:layout_constraintStart_toEndOf="@id/patientImgView"
+                app:layout_constraintTop_toBottomOf="@id/cardTitleTxtView"
+                tools:text="2/11/2023" />
+
+            <TextView
+                android:id="@+id/timeTxtView"
+                style="@style/text_18"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/dimen_s"
+                android:text="@{model.time}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/dateTxtView"
+                app:layout_constraintTop_toBottomOf="@id/cardTitleTxtView"
+                tools:text="09:30" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

@@ -5,4 +5,6 @@ data class Address(
     val number: String,
     val city: String,
     val postalCode: String
-)
+) {
+    fun getAddressToDisplay() = "$street, $number, $city, $postalCode"
+}

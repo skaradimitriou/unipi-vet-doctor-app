@@ -28,7 +28,7 @@ object DoctorInfoMapper : BaseMapper<DoctorInfoDto?, DoctorInfo> {
 
     private fun WorkingHoursDto?.toDomainModel() = WorkingHours(
         normal = this?.normal.toNotNull(),
-        weekends = this?.normal.toNotNull()
+        weekends = this?.weekends.toNotNull()
     )
 
     private fun ContactDetailsDto?.toDomainModel() = ContactDetails(

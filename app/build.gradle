@@ -83,8 +83,7 @@ dependencies {
 
     implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
 
-    // The view calendar library
-    implementation 'com.kizitonwose.calendar:view:2.0.2'
+    implementation 'com.github.sundeepk:compact-calendar-view:3.0.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

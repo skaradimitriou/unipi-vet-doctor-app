@@ -41,19 +41,19 @@ class ProfileViewModel @Inject constructor(
                 ProfileCard(
                     R.drawable.ic_location,
                     "Address",
-                    doctorInfo.details.address.toString(),
+                    doctorInfo.details.address.getAddressToDisplay(),
                     ProfileCardType.ADDRESS
                 ),
                 ProfileCard(
                     R.drawable.ic_time,
                     "Working hours",
-                    doctorInfo.details.workingHours.toString(),
+                    doctorInfo.details.workingHours.getWorkingHours(),
                     ProfileCardType.WORKING_HOURS
                 ),
                 ProfileCard(
                     R.drawable.ic_phone,
                     "Contact info",
-                    doctorInfo.details.contact.toString(),
+                    doctorInfo.details.contact.getContactDetails(),
                     ProfileCardType.CONTACT_INFO
                 )
             )

@@ -1,16 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.calendar.CalendarFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/grey_bg"
+        app:layoutDescription="@xml/fragment_calendar_xml_constraintlayout_scene">
 
-        <com.kizitonwose.calendar.view.CalendarView
+        <TextView
+            android:id="@+id/monthTxtView"
+            style="@style/text_18_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffe95451"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/dimen_m"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="November" />
+
+        <com.github.sundeepk.compactcalendarview.CompactCalendarView
             android:id="@+id/calendarView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="@dimen/dimen_250"
+            android:paddingHorizontal="@dimen/dimen_m"
+            android:scrollIndicators="left|right"
+            app:compactCalendarBackgroundColor="#ffe95451"
+            app:compactCalendarCurrentDayBackgroundColor="#B71C1C"
+            app:compactCalendarCurrentSelectedDayBackgroundColor="#E57373"
+            app:compactCalendarMultiEventIndicatorColor="#fff"
+            app:compactCalendarTargetHeight="@dimen/dimen_250"
+            app:compactCalendarTextColor="@color/white"
+            app:compactCalendarTextSize="@dimen/text_16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/monthTxtView" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/appointmentsRecycler"
+            style="@style/AppRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/calendarView"
+            tools:listitem="@layout/holder_appointment" />
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

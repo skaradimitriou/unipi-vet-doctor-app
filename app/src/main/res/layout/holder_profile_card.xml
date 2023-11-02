@@ -26,7 +26,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="@dimen/dimen_m">
+            android:padding="@dimen/dimen_l">
 
             <ImageView
                 android:id="@+id/cardImgView"
@@ -43,7 +43,6 @@
                 style="@style/text_18_bold"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_s"
                 android:gravity="center_horizontal"
                 android:padding="@dimen/dimen_s"
                 android:text="@{model.text}"
