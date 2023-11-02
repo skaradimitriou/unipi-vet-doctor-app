@@ -35,7 +35,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding>(R.layout.fragme
     }
 
     override fun startOps() {
-        viewModel.getData()
+        viewModel.getData(noOfAppointments = sharedVM.todaysAppointments)
         viewModel.data.observe(viewLifecycleOwner) { data ->
             adapter.submitList(data)
         }

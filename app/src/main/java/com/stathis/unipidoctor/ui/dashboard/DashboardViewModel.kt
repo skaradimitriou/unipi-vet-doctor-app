@@ -28,7 +28,7 @@ class DashboardViewModel @Inject constructor(
 
     private val _data = MutableLiveData<List<UiModel>>()
 
-    fun getData() {
+    fun getData(noOfAppointments : Int) {
         viewModelScope.launch(dispatcher) {
             val doctorInfo = useCase.invoke()
             val list = listOf(
@@ -37,7 +37,7 @@ class DashboardViewModel @Inject constructor(
                     username = doctorInfo.username
                 ), DashboardCard(
                     title = "Today's appointments >",
-                    subtitle = "You have 5 appointments for today."
+                    subtitle = "You have $noOfAppointments appointments for today."
                 ),
                 DashboardDocCard(
                     title = "Doctor Card >",

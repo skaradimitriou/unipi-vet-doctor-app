@@ -3,15 +3,13 @@ package com.stathis.unipidoctor.ui
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import com.stathis.domain.model.DoctorInfo
 import com.stathis.unipidoctor.abstraction.BaseViewModel
 import com.stathis.unipidoctor.di.IoDispatcher
 import com.stathis.unipidoctor.navigation.NavigationAction
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.random.Random
 
 @HiltViewModel
 class MainSharedViewModel @Inject constructor(
@@ -24,22 +22,15 @@ class MainSharedViewModel @Inject constructor(
 
     private val _navigatorState = MutableLiveData<NavigationAction?>()
 
-    val doctorData: LiveData<DoctorInfo?>
-        get() = _doctorData
+    var todaysAppointments = 0
 
-    private val _doctorData = MutableLiveData<DoctorInfo?>()
+    init {
+        todaysAppointments = Random.Default.nextInt(1, 8)
+    }
 
     fun resetNavigation() = _navigatorState.postValue(null)
 
     fun navigateToScreen(action: NavigationAction?) {
         _navigatorState.postValue(action)
-    }
-
-    fun getDoctorData() {
-        viewModelScope.launch(dispatcher) {
-//            repository.getDoctorData().collect {
-//                _doctorData.postValue(it)
-//            }
-        }
     }
 }
