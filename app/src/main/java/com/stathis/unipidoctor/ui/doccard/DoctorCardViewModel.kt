@@ -39,7 +39,8 @@ class DoctorCardViewModel @Inject constructor(
             val doctorInfo = useCase.invoke()
             val dummyDoctorCard = DoctorCard(
                 imageUrl = doctorInfo.imageUrl,
-                fullName = doctorInfo.details.contact.telephone
+                fullName = doctorInfo.fullName,
+                telephone = doctorInfo.details.contact.telephone,
             )
             _doctorCard.postValue(dummyDoctorCard)
 

@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dashboard_nav"
-    app:startDestination="@id/dashboardFragment">
+    app:startDestination="@id/nav_home">
 
     <fragment
-        android:id="@+id/dashboardFragment"
+        android:id="@+id/nav_home"
         android:name="com.stathis.unipidoctor.ui.dashboard.DashboardFragment"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" />
@@ -40,5 +40,10 @@
         android:name="com.stathis.unipidoctor.ui.changeaddress.AddressFragment"
         android:label="fragment_address"
         tools:layout="@layout/fragment_address" />
+    <fragment
+        android:id="@+id/nav_analytics"
+        android:name="com.stathis.unipidoctor.ui.analytics.AnalyticsFragment"
+        android:label="fragment_analytics"
+        tools:layout="@layout/fragment_analytics" />
 
 </navigation>

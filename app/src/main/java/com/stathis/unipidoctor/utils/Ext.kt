@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.graphics.ImageDecoder
 import android.net.Uri
 import android.os.Build
@@ -14,6 +15,11 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.github.mikephil.charting.charts.BarChart
+import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.BarDataSet
+import com.github.mikephil.charting.data.BarEntry
+import com.stathis.unipidoctor.R
 import java.io.ByteArrayOutputStream
 import java.io.Serializable
 
@@ -29,7 +35,10 @@ inline fun <reified T : Parcelable> Intent.getParcelable(key: String): T? = when
 }
 
 inline fun <reified T : Serializable> Intent.getSerializable(key: String): T? = when {
-    Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU -> getSerializableExtra(key, T::class.java)
+    Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU -> getSerializableExtra(
+        key,
+        T::class.java
+    )
     else -> @Suppress("DEPRECATION") getSerializableExtra(key) as? T
 }
 
@@ -77,4 +86,27 @@ fun Uri.toBitmap(context: Context): Bitmap {
     } else {
         MediaStore.Images.Media.getBitmap(context.contentResolver, this)
     }
+}
+
+/**
+ * Helper fun to create Smarty's energy chart
+ */
+
+fun BarChart.setupChart(list: List<BarEntry>) {
+    val dataset = BarDataSet(list, "Appointments")
+    dataset.colors = listOf(R.color.dark_blue)
+    dataset.valueTextColor = Color.BLACK
+    dataset.setDrawValues(false)
+
+    val barData = BarData(dataset)
+
+    data = barData
+    axisRight.setDrawLabels(false)
+    legend.isEnabled = false
+    animateY(1000)
+    description.isEnabled = false
+    axisRight.setDrawGridLines(false)
+    axisLeft.setDrawGridLines(false)
+    xAxis.setDrawGridLines(false)
+    setPinchZoom(false)
 }

@@ -1,10 +1,12 @@
 package com.stathis.unipidoctor.utils
 
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.stathis.unipidoctor.R
+import com.stathis.unipidoctor.ui.analytics.uimodel.AnalyticsModel
 
 @BindingAdapter("setProfileImage")
 fun ImageView.setProfileImage(url: String?) {

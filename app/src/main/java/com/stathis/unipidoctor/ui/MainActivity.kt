@@ -4,6 +4,7 @@ import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.stathis.unipidoctor.R
 import com.stathis.unipidoctor.abstraction.BaseActivity
 import com.stathis.unipidoctor.databinding.ActivityMainBinding
@@ -20,12 +21,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     override fun init() {
         navController = findNavController(R.id.nav_host_fragment)
+        binding.bottomNavMenu.setupWithNavController(navController)
         navigator = NavigatorImpl(this, navController)
     }
 
     override fun startOps() {
         navController.addOnDestinationChangedListener { _, destination, arguments ->
-            val isAtInitScreens = destination.id == R.id.dashboardFragment
+            val initScreens = listOf(R.id.nav_home, R.id.nav_analytics)
+            val isAtInitScreens = initScreens.contains(destination.id)
             binding.shouldShowBottomNavBar = isAtInitScreens
             supportActionBar?.setDisplayHomeAsUpEnabled(!isAtInitScreens)
         }

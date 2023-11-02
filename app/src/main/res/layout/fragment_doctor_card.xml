@@ -52,6 +52,18 @@
                     app:layout_constraintTop_toBottomOf="@id/profileImgView"
                     tools:text="Doctor Doctoropoulos" />
 
+                <TextView
+                    android:id="@+id/telephoneTxtView"
+                    style="@style/text_18"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@{model.telephone}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/usernameTxtView"
+                    tools:text="Doctor Doctoropoulos" />
+
                 <ImageView
                     android:id="@+id/qrImgView"
                     android:layout_width="@dimen/dimen_200"
@@ -60,7 +72,7 @@
                     android:scaleType="centerCrop"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/usernameTxtView"
+                    app:layout_constraintTop_toBottomOf="@id/telephoneTxtView"
                     tools:src="@drawable/dummy_qr" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
