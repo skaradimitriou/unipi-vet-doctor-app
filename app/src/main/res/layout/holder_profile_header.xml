@@ -8,6 +8,10 @@
         <variable
             name="model"
             type="com.stathis.unipidoctor.ui.profile.adapter.ProfileHeader" />
+
+        <variable
+            name="callback"
+            type="com.stathis.unipidoctor.ui.profile.adapter.ProfileScreenCallback" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,6 +31,7 @@
             android:layout_width="@dimen/dimen_4xl"
             android:layout_height="@dimen/dimen_4xl"
             android:layout_marginTop="@dimen/dimen_l"
+            android:onClick="@{() -> callback.onProfileClick()}"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

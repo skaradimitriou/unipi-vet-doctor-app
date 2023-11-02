@@ -18,6 +18,12 @@
         tools:layout="@layout/fragment_profile" />
 
     <fragment
+        android:id="@+id/uploadImageFragment"
+        android:name="com.stathis.unipidoctor.ui.image.UploadImageFragment"
+        android:label="UploadImageFragment"
+        tools:layout="@layout/fragment_upload_image" />
+
+    <fragment
         android:id="@+id/calendarFragment"
         android:name="com.stathis.unipidoctor.ui.calendar.CalendarFragment"
         android:label="fragment_calendar"

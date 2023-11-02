@@ -1,6 +1,7 @@
 package com.stathis.data.di
 
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.StorageReference
 import com.stathis.data.repositories.DoctorRepositoryImpl
 import com.stathis.domain.repositories.*
 import dagger.Module
@@ -16,6 +17,7 @@ class RepositoryModule {
     @Provides
     @Singleton
     fun provideDoctorRepository(
-        firestore: FirebaseFirestore
-    ): DoctorRepository = DoctorRepositoryImpl(firestore)
+        firestore: FirebaseFirestore,
+        storage : StorageReference
+    ): DoctorRepository = DoctorRepositoryImpl(firestore, storage)
 }

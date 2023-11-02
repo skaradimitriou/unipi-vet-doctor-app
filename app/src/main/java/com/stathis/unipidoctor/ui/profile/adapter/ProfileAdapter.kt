@@ -53,8 +53,7 @@ class ProfileViewHolder(
 
     override fun present(data: UiModel) {
         when (data) {
-            is ProfileHeader -> binding.setVariable(BR.model, data)
-            is ProfileCard -> {
+            is ProfileHeader, is ProfileCard -> {
                 binding.setVariable(BR.model, data)
                 binding.setVariable(BR.callback, callback)
             }
@@ -63,6 +62,7 @@ class ProfileViewHolder(
     }
 }
 
-fun interface ProfileScreenCallback {
+interface ProfileScreenCallback {
+    fun onProfileClick()
     fun onCardClick(card: ProfileCard)
 }

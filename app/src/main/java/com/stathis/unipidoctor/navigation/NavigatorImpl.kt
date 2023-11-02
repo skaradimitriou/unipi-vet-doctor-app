@@ -14,6 +14,8 @@ class NavigatorImpl @Inject constructor(
 
     override fun navigateTo(screenKey: NavigationAction) = when (screenKey) {
         NavigationAction.PROFILE -> navController.navigate(R.id.profileFragment)
+        NavigationAction.UPLOAD_PHOTO -> navController.navigate(R.id.uploadImageFragment)
+        NavigationAction.PHOTO_UPLOADED -> goBack()
         NavigationAction.SHOW_DOCTOR_QR -> navController.navigate(R.id.doctorCardFragment)
         NavigationAction.CALENDAR -> navController.navigate(R.id.calendarFragment)
         NavigationAction.ADDRESS -> navController.navigate(R.id.addressFragment)

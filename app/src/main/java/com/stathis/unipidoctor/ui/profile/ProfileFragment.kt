@@ -8,7 +8,9 @@ import com.stathis.unipidoctor.databinding.FragmentProfileBinding
 import com.stathis.unipidoctor.navigation.NavigationAction
 import com.stathis.unipidoctor.ui.MainSharedViewModel
 import com.stathis.unipidoctor.ui.profile.adapter.ProfileAdapter
+import com.stathis.unipidoctor.ui.profile.adapter.ProfileCard
 import com.stathis.unipidoctor.ui.profile.adapter.ProfileCardType
+import com.stathis.unipidoctor.ui.profile.adapter.ProfileScreenCallback
 import com.stathis.unipidoctor.utils.decor.VerticalItemDecoration
 import com.stathis.unipidoctor.utils.removeItemDecorations
 import com.stathis.unipidoctor.utils.setScreenTitle
@@ -20,12 +22,18 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_p
     private val viewModel: ProfileViewModel by viewModels()
     private val sharedVM: MainSharedViewModel by activityViewModels()
 
-    private val adapter = ProfileAdapter { selectedCard ->
-        when (selectedCard.type) {
-            ProfileCardType.ADDRESS -> sharedVM.navigateToScreen(NavigationAction.ADDRESS)
-            else -> Unit
+    private val adapter = ProfileAdapter(object : ProfileScreenCallback {
+        override fun onProfileClick() {
+            sharedVM.navigateToScreen(NavigationAction.UPLOAD_PHOTO)
         }
-    }
+
+        override fun onCardClick(card: ProfileCard) {
+            when (card.type) {
+                ProfileCardType.ADDRESS -> sharedVM.navigateToScreen(NavigationAction.ADDRESS)
+                else -> Unit
+            }
+        }
+    })
 
     override fun init() {
         setScreenTitle(getString(R.string.profile))
