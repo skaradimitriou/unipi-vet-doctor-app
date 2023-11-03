@@ -4,6 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.calendar.CalendarFragment">
 
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="emptyAppointments"
+            type="Boolean" />
+    </data>
+
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
@@ -46,10 +53,23 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
+            android:visibility="@{emptyAppointments ? View.GONE : View.VISIBLE}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/calendarView"
             tools:listitem="@layout/holder_appointment" />
+
+        <TextView
+            android:id="@+id/emptyTxtView"
+            style="@style/text_18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/dimen_m"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/calendarView"
+            tools:text="There are no appointments for today" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

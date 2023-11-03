@@ -32,7 +32,7 @@ class AnalyticsViewModel @Inject constructor(
         val list = mutableListOf<AnalyticsModel>()
         val bars = mutableListOf<BarEntry>()
 
-        repeat(12) {
+        repeat(10) {
             val month = Month.of(it + 1)
             val monthName = month.getDisplayName(TextStyle.FULL, Locale.ENGLISH)
             val value = Random.Default.nextInt(10, 50).toString()

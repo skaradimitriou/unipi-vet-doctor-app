@@ -25,6 +25,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
 
     override fun init() {
         setScreenTitle("My Calendar")
+        binding.emptyAppointments = false
 
         binding.appointmentsRecycler.apply {
             removeItemDecorations()
@@ -52,6 +53,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
         })
 
         viewModel.appointments.observe(viewLifecycleOwner) { appointments ->
+            binding.emptyAppointments = appointments.isEmpty()
             adapter.submitList(appointments)
         }
     }
