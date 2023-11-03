@@ -5,7 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.stathis.domain.model.UiModel
+import com.stathis.domain.usecases.FetchDoctorAppointmentsUseCase
 import com.stathis.domain.usecases.FetchDoctorInfoUseCase
+import com.stathis.unipidoctor.R
 import com.stathis.unipidoctor.abstraction.BaseViewModel
 import com.stathis.unipidoctor.di.IoDispatcher
 import com.stathis.unipidoctor.ui.dashboard.uimodel.DashboardCard
@@ -20,7 +22,8 @@ import javax.inject.Inject
 class DashboardViewModel @Inject constructor(
     app: Application,
     @IoDispatcher private val dispatcher: CoroutineDispatcher,
-    private val useCase: FetchDoctorInfoUseCase
+    private val useCase: FetchDoctorInfoUseCase,
+    private val appointmentsUseCase : FetchDoctorAppointmentsUseCase
 ) : BaseViewModel(app) {
 
     val data: LiveData<List<UiModel>>
@@ -28,7 +31,7 @@ class DashboardViewModel @Inject constructor(
 
     private val _data = MutableLiveData<List<UiModel>>()
 
-    fun getData(noOfAppointments : Int) {
+    fun getData() {
         viewModelScope.launch(dispatcher) {
             val doctorInfo = useCase.invoke()
             val list = listOf(
@@ -36,12 +39,14 @@ class DashboardViewModel @Inject constructor(
                     imageUrl = doctorInfo.imageUrl,
                     username = doctorInfo.username
                 ), DashboardCard(
-                    title = "Today's appointments >",
-                    subtitle = "You have $noOfAppointments appointments for today."
+                    title = "Appointments",
+                    subtitle = "You have ${appointmentsUseCase.invoke().size} appointments for today.",
+                    image = R.drawable.calendar
                 ),
                 DashboardDocCard(
-                    title = "Doctor Card >",
-                    subtitle = "Tap here to share your doctor card with your patients."
+                    title = "Doctor QR Card",
+                    subtitle = "Tap here to share your doctor card with your patients.",
+                    image = R.drawable.dummy_qr
                 )
             )
 

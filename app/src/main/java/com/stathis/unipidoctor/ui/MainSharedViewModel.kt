@@ -22,12 +22,6 @@ class MainSharedViewModel @Inject constructor(
 
     private val _navigatorState = MutableLiveData<NavigationAction?>()
 
-    var todaysAppointments = 0
-
-    init {
-        todaysAppointments = Random.Default.nextInt(1, 8)
-    }
-
     fun resetNavigation() = _navigatorState.postValue(null)
 
     fun navigateToScreen(action: NavigationAction?) {

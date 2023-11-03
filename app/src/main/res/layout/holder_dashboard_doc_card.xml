@@ -28,6 +28,17 @@
             android:layout_height="match_parent"
             android:padding="@dimen/dimen_m">
 
+            <ImageView
+                android:id="@+id/cardImgView"
+                android:layout_width="@dimen/dimen_100"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                app:loadIcon="@{model.image}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@mipmap/ic_launcher" />
+
             <TextView
                 android:id="@+id/cardTitleTxtView"
                 style="@style/text_18_bold"
@@ -36,7 +47,7 @@
                 android:padding="@dimen/dimen_s"
                 android:text="@{model.title}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cardImgView"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="stathis" />
 
@@ -48,7 +59,7 @@
                 android:padding="@dimen/dimen_s"
                 android:text="@{model.subtitle}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cardImgView"
                 app:layout_constraintTop_toBottomOf="@id/cardTitleTxtView"
                 tools:text="stathis" />
 

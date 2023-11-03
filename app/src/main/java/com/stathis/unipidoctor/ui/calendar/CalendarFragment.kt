@@ -2,7 +2,6 @@ package com.stathis.unipidoctor.ui.calendar
 
 import androidx.fragment.app.viewModels
 import com.github.sundeepk.compactcalendarview.CompactCalendarView
-import com.stathis.domain.model.Appointment
 import com.stathis.unipidoctor.R
 import com.stathis.unipidoctor.abstraction.BaseFragment
 import com.stathis.unipidoctor.databinding.FragmentCalendarBinding
@@ -10,13 +9,14 @@ import com.stathis.unipidoctor.ui.calendar.adapter.AppointmentsAdapter
 import com.stathis.unipidoctor.utils.decor.VerticalItemDecoration
 import com.stathis.unipidoctor.utils.removeItemDecorations
 import com.stathis.unipidoctor.utils.setScreenTitle
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import java.time.LocalDateTime
 import java.time.Month
 import java.time.format.TextStyle
 import java.util.*
 
-
+@AndroidEntryPoint
 class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment_calendar) {
 
     private val viewModel: CalendarViewModel by viewModels()
@@ -32,37 +32,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
             addItemDecoration(VerticalItemDecoration(30))
         }
 
-        //FIXME: Remove the appointments from the fragment later on
-
-        val list = listOf(
-            Appointment(
-                "Bruce Lee",
-                "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQduATtlxEYMPyu8LC4mzVVUOEhzKPrTqvZK7vthYbbvBweFaH1",
-                "2/11/2023",
-                "09:30",
-            ), Appointment(
-                "Bruce Lee",
-                "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQduATtlxEYMPyu8LC4mzVVUOEhzKPrTqvZK7vthYbbvBweFaH1",
-                "2/11/2023",
-                "09:30",
-            ), Appointment(
-                "Bruce Lee",
-                "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQduATtlxEYMPyu8LC4mzVVUOEhzKPrTqvZK7vthYbbvBweFaH1",
-                "2/11/2023",
-                "09:30",
-            ), Appointment(
-                "Bruce Lee",
-                "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQduATtlxEYMPyu8LC4mzVVUOEhzKPrTqvZK7vthYbbvBweFaH1",
-                "2/11/2023",
-                "09:30",
-            ), Appointment(
-                "Bruce Lee",
-                "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQduATtlxEYMPyu8LC4mzVVUOEhzKPrTqvZK7vthYbbvBweFaH1",
-                "2/11/2023",
-                "09:30",
-            )
-        )
-        adapter.submitList(list)
+        viewModel.fetchDoctorAppointments()
     }
 
     override fun startOps() {
@@ -71,7 +41,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
 
         binding.calendarView.setListener(object : CompactCalendarView.CompactCalendarViewListener {
             override fun onDayClick(dateClicked: Date?) {
-                Timber.d("DAY => $dateClicked")
+                viewModel.getAppointmentsForDate(dateClicked ?: Date())
             }
 
             override fun onMonthScroll(firstDayOfNewMonth: Date?) {
@@ -80,6 +50,10 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
                 binding.monthTxtView.text = monthName
             }
         })
+
+        viewModel.appointments.observe(viewLifecycleOwner) { appointments ->
+            adapter.submitList(appointments)
+        }
     }
 
     override fun stopOps() {}

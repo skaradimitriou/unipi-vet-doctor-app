@@ -16,6 +16,8 @@ class NavigatorImpl @Inject constructor(
         NavigationAction.PROFILE -> navController.navigate(R.id.profileFragment)
         NavigationAction.UPLOAD_PHOTO -> navController.navigate(R.id.uploadImageFragment)
         NavigationAction.PHOTO_UPLOADED -> goBack()
+        NavigationAction.UPDATE_CONTACT_INFO ->navController.navigate(R.id.contactFragment)
+        NavigationAction.CONTACT_INFO_UPDATED -> goBack()
         NavigationAction.SHOW_DOCTOR_QR -> navController.navigate(R.id.doctorCardFragment)
         NavigationAction.CALENDAR -> navController.navigate(R.id.calendarFragment)
         NavigationAction.ADDRESS -> navController.navigate(R.id.addressFragment)

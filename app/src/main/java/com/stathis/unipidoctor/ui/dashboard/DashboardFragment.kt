@@ -24,7 +24,6 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding>(R.layout.fragme
     private val adapter = DashboardAdapter(this)
 
     override fun init() {
-        //FIXME: Remove hardcoded value when possible
         setScreenTitle("Home")
 
         binding.dashboardRecycler.apply {
@@ -35,7 +34,8 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding>(R.layout.fragme
     }
 
     override fun startOps() {
-        viewModel.getData(noOfAppointments = sharedVM.todaysAppointments)
+        viewModel.getData()
+
         viewModel.data.observe(viewLifecycleOwner) { data ->
             adapter.submitList(data)
         }

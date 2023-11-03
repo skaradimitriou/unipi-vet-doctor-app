@@ -30,6 +30,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_p
         override fun onCardClick(card: ProfileCard) {
             when (card.type) {
                 ProfileCardType.ADDRESS -> sharedVM.navigateToScreen(NavigationAction.ADDRESS)
+                ProfileCardType.CONTACT_INFO -> sharedVM.navigateToScreen(NavigationAction.UPDATE_CONTACT_INFO)
                 else -> Unit
             }
         }

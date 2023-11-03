@@ -48,26 +48,14 @@
 
             <TextView
                 android:id="@+id/dateTxtView"
-                style="@style/text_18"
+                style="@style/text_16"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="@dimen/dimen_s"
-                android:text="@{model.date}"
+                android:text="@{model.displayedDate}"
                 app:layout_constraintStart_toEndOf="@id/patientImgView"
                 app:layout_constraintTop_toBottomOf="@id/cardTitleTxtView"
                 tools:text="2/11/2023" />
-
-            <TextView
-                android:id="@+id/timeTxtView"
-                style="@style/text_18"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="@dimen/dimen_s"
-                android:text="@{model.time}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/dateTxtView"
-                app:layout_constraintTop_toBottomOf="@id/cardTitleTxtView"
-                tools:text="09:30" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

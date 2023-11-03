@@ -1,9 +1,16 @@
 package com.stathis.domain.repositories
 
 import android.graphics.Bitmap
+import com.stathis.domain.model.Appointment
 import com.stathis.domain.model.DoctorInfo
+import com.stathis.domain.model.UserInfo
+import java.util.Date
 
 interface DoctorRepository {
     suspend fun getDoctorData(): DoctorInfo
-    suspend fun updateDoctorImage(bitmap: Bitmap) : Boolean
+    suspend fun getDoctorAppointments(): List<Appointment>
+    suspend fun fetchAppointmentsForDate(date : Date): List<Appointment>
+    suspend fun updateDoctorImage(bitmap: Bitmap): Boolean
+    suspend fun updateDoctorDetails(email: String, telephone: String): Boolean
+    suspend fun getProfileInfo(uuid: String): UserInfo
 }

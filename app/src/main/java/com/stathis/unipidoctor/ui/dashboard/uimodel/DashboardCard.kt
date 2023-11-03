@@ -4,7 +4,8 @@ import com.stathis.domain.model.UiModel
 
 data class DashboardCard(
     val title: String,
-    val subtitle: String
+    val subtitle: String,
+    val image: Int
 ) : UiModel {
     override fun equalsContent(obj: UiModel) = when (obj) {
         is DashboardCard -> title == obj.title && subtitle == obj.subtitle
