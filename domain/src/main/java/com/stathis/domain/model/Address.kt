@@ -1,10 +1,10 @@
 package com.stathis.domain.model
 
 data class Address(
-    val street: String,
-    val number: String,
-    val city: String,
-    val postalCode: String
+    var street: String,
+    var number: String,
+    var city: String,
+    var postalCode: String
 ) {
     fun getAddressToDisplay() = "$street, $number, $city, $postalCode"
 }

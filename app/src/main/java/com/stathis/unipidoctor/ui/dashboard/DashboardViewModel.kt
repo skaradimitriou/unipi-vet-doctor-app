@@ -34,13 +34,20 @@ class DashboardViewModel @Inject constructor(
     fun getData() {
         viewModelScope.launch(dispatcher) {
             val doctorInfo = useCase.invoke()
+
+            val appointmentDesc = if(appointmentsUseCase.invoke().isEmpty()) {
+                "You have no appointments for today"
+            } else {
+                "You have ${appointmentsUseCase.invoke().size} appointments for today."
+            }
+
             val list = listOf(
                 DashboardHeader(
                     imageUrl = doctorInfo.imageUrl,
                     username = doctorInfo.username
                 ), DashboardCard(
                     title = "Appointments",
-                    subtitle = "You have ${appointmentsUseCase.invoke().size} appointments for today.",
+                    subtitle = appointmentDesc,
                     image = R.drawable.calendar
                 ),
                 DashboardDocCard(

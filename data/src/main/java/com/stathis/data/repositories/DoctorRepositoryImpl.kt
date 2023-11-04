@@ -113,6 +113,34 @@ class DoctorRepositoryImpl @Inject constructor(
         return true
     }
 
+    override suspend fun updateDoctorAddress(
+        streetName: String,
+        number: String,
+        postalCode: String,
+        city: String
+    ): Boolean {
+        val result = firestore.collection("doctor")
+            .get()
+            .await()
+            .toListOf<DoctorInfoDto>()
+            .getOrNull(0)
+
+        val docDetails = DoctorInfoMapper.toDomainModel(result)
+        val newDetails = docDetails.details.apply {
+            this.address.street = streetName
+            this.address.number = number
+            this.address.postalCode = postalCode
+            this.address.city = city
+        }
+
+        val data: HashMap<String, Any> = hashMapOf(
+            "details" to newDetails
+        )
+
+        firestore.collection("doctor").document("KZNz18NTLMSK34ESmzUG").update(data).await()
+        return true
+    }
+
     override suspend fun getProfileInfo(uuid: String): UserInfo {
         val result = firestore.collection("users")
             .document(uuid)

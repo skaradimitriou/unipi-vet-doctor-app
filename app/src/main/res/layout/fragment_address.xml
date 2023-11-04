@@ -1,12 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.changeaddress.AddressFragment">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.stathis.unipidoctor.ui.changeaddress.AddressViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/grey_bg"
+        android:padding="@dimen/dimen_l">
 
+        <TextView
+            android:id="@+id/headerTxtView"
+            style="@style/text_18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update your address information"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/streetInputTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_l"
+            android:background="@drawable/round_corners"
+            android:hint="Street Name"
+            android:padding="@dimen/dimen_m"
+            app:layout_constraintTop_toBottomOf="@id/headerTxtView" />
+
+        <EditText
+            android:id="@+id/numberInputTxt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_l"
+            android:background="@drawable/round_corners"
+            android:gravity="top"
+            android:hint="Number"
+            android:padding="@dimen/dimen_m"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/streetInputTxt" />
+
+        <EditText
+            android:id="@+id/postalCodeInputTxt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_m"
+            android:layout_marginTop="@dimen/dimen_l"
+            android:background="@drawable/round_corners"
+            android:gravity="top"
+            android:hint="Postal Code"
+            android:padding="@dimen/dimen_m"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/numberInputTxt"
+            app:layout_constraintTop_toBottomOf="@id/streetInputTxt" />
+
+        <EditText
+            android:id="@+id/cityInputTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_l"
+            android:background="@drawable/round_corners"
+            android:hint="City"
+            android:padding="@dimen/dimen_m"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/postalCodeInputTxt" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/saveBtn"
+            style="@style/AppButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="@{viewModel.buttonState}"
+            android:text="Save"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

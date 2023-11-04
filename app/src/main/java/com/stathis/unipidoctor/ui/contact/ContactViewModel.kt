@@ -46,7 +46,8 @@ class ContactViewModel @Inject constructor(
     private fun getProfileInfo() {
         viewModelScope.launch(dispatcher) {
             val result = getProfileInfoUseCase.invoke()
-            val model = UpdateInfoModel(result.details.contact.email, result.details.contact.telephone)
+            val model =
+                UpdateInfoModel(result.details.contact.email, result.details.contact.telephone)
             _userInfo.postValue(model)
         }
     }
