@@ -52,6 +52,7 @@
             style="@style/AppRecycler"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:paddingTop="@dimen/dimen_m"
             android:orientation="vertical"
             android:visibility="@{emptyAppointments ? View.GONE : View.VISIBLE}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

@@ -12,6 +12,6 @@ class VerticalItemDecoration(private val offset: Int) : RecyclerView.ItemDecorat
         parent: RecyclerView,
         state: RecyclerView.State
     ) {
-        outRect.top = offset
+        outRect.bottom = offset
     }
 }
