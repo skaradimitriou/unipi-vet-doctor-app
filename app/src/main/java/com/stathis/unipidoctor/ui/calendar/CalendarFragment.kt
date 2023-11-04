@@ -24,7 +24,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(R.layout.fragment
     private val adapter = AppointmentsAdapter()
 
     override fun init() {
-        setScreenTitle("My Calendar")
+        setScreenTitle(getString(R.string.my_calendar))
         binding.emptyAppointments = false
 
         binding.appointmentsRecycler.apply {

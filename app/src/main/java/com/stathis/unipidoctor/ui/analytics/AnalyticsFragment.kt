@@ -18,7 +18,7 @@ class AnalyticsFragment : BaseFragment<FragmentAnalyticsBinding>(R.layout.fragme
     private val adapter = AnalyticsAdapter()
 
     override fun init() {
-        setScreenTitle("Analytics")
+        setScreenTitle(getString(R.string.analytics))
 
         binding.analyticsRecycler.apply {
             removeItemDecorations()

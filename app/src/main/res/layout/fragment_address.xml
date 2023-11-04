@@ -22,7 +22,7 @@
             style="@style/text_18"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Update your address information"
+            android:text="@string/address_header"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_l"
             android:background="@drawable/round_corners"
-            android:hint="Street Name"
+            android:hint="@string/street_name"
             android:padding="@dimen/dimen_m"
             app:layout_constraintTop_toBottomOf="@id/headerTxtView" />
 
@@ -43,7 +43,7 @@
             android:layout_marginTop="@dimen/dimen_l"
             android:background="@drawable/round_corners"
             android:gravity="top"
-            android:hint="Number"
+            android:hint="@string/number"
             android:padding="@dimen/dimen_m"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/streetInputTxt" />
@@ -56,7 +56,7 @@
             android:layout_marginTop="@dimen/dimen_l"
             android:background="@drawable/round_corners"
             android:gravity="top"
-            android:hint="Postal Code"
+            android:hint="@string/postal_code"
             android:padding="@dimen/dimen_m"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/numberInputTxt"
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_l"
             android:background="@drawable/round_corners"
-            android:hint="City"
+            android:hint="@string/city"
             android:padding="@dimen/dimen_m"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/postalCodeInputTxt" />
@@ -79,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:enabled="@{viewModel.buttonState}"
-            android:text="Save"
+            android:text="@string/save"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

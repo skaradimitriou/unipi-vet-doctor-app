@@ -24,7 +24,7 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding>(R.layout.fragme
     private val adapter = DashboardAdapter(this)
 
     override fun init() {
-        setScreenTitle("Home")
+        setScreenTitle(getString(R.string.home))
 
         binding.dashboardRecycler.apply {
             removeItemDecorations()

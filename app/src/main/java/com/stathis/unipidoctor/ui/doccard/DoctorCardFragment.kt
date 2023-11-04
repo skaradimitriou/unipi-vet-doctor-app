@@ -13,7 +13,7 @@ class DoctorCardFragment : BaseFragment<FragmentDoctorCardBinding>(R.layout.frag
     private val viewModel: DoctorCardViewModel by viewModels()
 
     override fun init() {
-        setScreenTitle("Share Doctor Card")
+        setScreenTitle(getString(R.string.doctor_card_title))
     }
 
     override fun startOps() {

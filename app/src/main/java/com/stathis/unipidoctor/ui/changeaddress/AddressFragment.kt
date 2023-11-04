@@ -18,7 +18,7 @@ class AddressFragment : BaseFragment<FragmentAddressBinding>(R.layout.fragment_a
     private val sharedVM: MainSharedViewModel by activityViewModels()
 
     override fun init() {
-        setScreenTitle("Update Address")
+        setScreenTitle(getString(R.string.update_address))
 
         binding.viewModel = viewModel
 

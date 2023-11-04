@@ -18,7 +18,7 @@ class ContactFragment : BaseFragment<FragmentContactBinding>(R.layout.fragment_c
     private val sharedVM: MainSharedViewModel by activityViewModels()
 
     override fun init() {
-        setScreenTitle("Update Contact Details")
+        setScreenTitle(getString(R.string.update_contact))
 
         binding.viewModel = viewModel
 

@@ -14,7 +14,7 @@
             style="@style/text_18"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Upload an image of your preference."
+            android:text="@string/upload_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,7 +45,7 @@
             android:background="@color/grey_dark_bg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Save"
+            android:text="@string/save"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

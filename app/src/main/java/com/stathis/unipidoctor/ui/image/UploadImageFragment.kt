@@ -34,7 +34,7 @@ class UploadImageFragment :
     }
 
     override fun init() {
-        setScreenTitle("Update Doctor Image")
+        setScreenTitle(getString(R.string.update_doc_image))
         viewModel.getUserImage()
 
         binding.addImgBtn.setOnClickListener {
