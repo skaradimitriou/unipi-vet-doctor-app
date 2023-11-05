@@ -41,6 +41,11 @@
         <item name="android:textSize">@dimen/text_18</item>
     </style>
 
+    <style name="text_18_italics" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/text_18</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
     <style name="text_16" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">@dimen/text_16</item>
     </style>

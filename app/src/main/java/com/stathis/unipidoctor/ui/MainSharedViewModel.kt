@@ -1,6 +1,7 @@
 package com.stathis.unipidoctor.ui
 
 import android.app.Application
+import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.stathis.unipidoctor.abstraction.BaseViewModel
@@ -9,7 +10,6 @@ import com.stathis.unipidoctor.navigation.NavigationAction
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
-import kotlin.random.Random
 
 @HiltViewModel
 class MainSharedViewModel @Inject constructor(
@@ -17,14 +17,20 @@ class MainSharedViewModel @Inject constructor(
     @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) : BaseViewModel(app) {
 
-    val navigatorState: LiveData<NavigationAction?>
+    val navigatorState: LiveData<NavigationInfo?>
         get() = _navigatorState
 
-    private val _navigatorState = MutableLiveData<NavigationAction?>()
+    private val _navigatorState = MutableLiveData<NavigationInfo?>()
 
     fun resetNavigation() = _navigatorState.postValue(null)
 
-    fun navigateToScreen(action: NavigationAction?) {
-        _navigatorState.postValue(action)
+    fun navigateToScreen(action: NavigationAction?, args: Bundle? = null) {
+        val navigationAction = NavigationInfo(action, args)
+        _navigatorState.postValue(navigationAction)
     }
+
+    data class NavigationInfo(
+        val action: NavigationAction? = null,
+        val args: Bundle? = null
+    )
 }

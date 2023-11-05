@@ -33,8 +33,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             supportActionBar?.setDisplayHomeAsUpEnabled(!isAtInitScreens)
         }
 
-        viewModel.navigatorState.observe(this) { action ->
-            action?.let { navigator.navigateTo(it) }
+        viewModel.navigatorState.observe(this) { navigationAction ->
+            navigationAction?.let { model ->
+                model.action?.let { navigator.navigateTo(it, model.args) }
+            }
         }
     }
 

@@ -10,6 +10,7 @@
     <string name="upload_image_header">Upload a new profile image for your account</string>
     <string name="nav_home">Home</string>
     <string name="nav_analytics">Analytics</string>
+    <string name="nav_chat">Chat</string>
     <string name="address_header">Update your address information</string>
     <string name="street_name">Street Name</string>
     <string name="number">Number</string>
@@ -26,6 +27,7 @@
     <string name="update_address">Update Address</string>
     <string name="update_contact">Update Contact Details</string>
     <string name="home">Home</string>
+    <string name="chat">Chat</string>
     <string name="doctor_card_title">Share Doctor Card</string>
     <string name="update_doc_image">Update Doctor Image</string>
 </resources>

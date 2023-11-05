@@ -7,20 +7,19 @@
 
         <variable
             name="model"
-            type="com.stathis.domain.model.Appointment" />
+            type="com.stathis.domain.model.ChatConversation" />
 
         <variable
             name="callback"
-            type="com.stathis.unipidoctor.ui.calendar.adapter.AppointmentsCallback" />
-
+            type="com.stathis.unipidoctor.ui.chatlanding.adapter.ChatLandingCallback" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dimen_10"
+        android:layout_marginHorizontal="@dimen/dimen_m"
+        android:onClick="@{() -> callback.onConversationClick(model)}"
         app:cardCornerRadius="@dimen/dimen_10"
-        android:onClick="@{() -> callback.onAppointmentClick(model)}"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -29,15 +28,16 @@
             android:layout_height="match_parent"
             android:padding="@dimen/dimen_m">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/patientImgView"
-                android:layout_width="@dimen/dimen_2xl"
-                android:layout_height="@dimen/dimen_2xl"
+            <ImageView
+                android:id="@+id/cardImgView"
+                android:layout_width="@dimen/dimen_3xl"
+                android:layout_height="0dp"
                 android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:setProfileImage="@{model.patientImage}"
-                tools:src="@drawable/profile_placeholder" />
+                app:setProfileImage="@{model.image}"
+                tools:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/cardTitleTxtView"
@@ -45,22 +45,23 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dimen_s"
-                android:text="@{model.patientName}"
+                android:text="@{model.username}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/patientImgView"
+                app:layout_constraintStart_toEndOf="@id/cardImgView"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Patient Name Placeholder" />
+                tools:text="stathis" />
 
             <TextView
-                android:id="@+id/dateTxtView"
-                style="@style/text_16"
+                android:id="@+id/cardSubtitleTxtView"
+                style="@style/text_18_italics"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="@dimen/dimen_s"
-                android:text="@{model.displayedDate}"
-                app:layout_constraintStart_toEndOf="@id/patientImgView"
+                android:padding="@dimen/dimen_s"
+                android:text="@{model.lastMessage}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cardImgView"
                 app:layout_constraintTop_toBottomOf="@id/cardTitleTxtView"
-                tools:text="2/11/2023" />
+                tools:text="stathis" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

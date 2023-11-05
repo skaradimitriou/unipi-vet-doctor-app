@@ -11,12 +11,14 @@ import com.stathis.unipidoctor.abstraction.BaseViewHolder
 import com.stathis.unipidoctor.abstraction.DiffUtilClass
 import com.stathis.unipidoctor.databinding.HolderAppointmentBinding
 
-class AppointmentsAdapter : ListAdapter<UiModel, AppointmentsViewHolder>(DiffUtilClass<UiModel>()) {
+class AppointmentsAdapter(
+    private val callback: AppointmentsCallback
+) : ListAdapter<UiModel, AppointmentsViewHolder>(DiffUtilClass<UiModel>()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppointmentsViewHolder {
         val view = HolderAppointmentBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
-        return AppointmentsViewHolder(view)
+        return AppointmentsViewHolder(view, callback)
     }
 
     override fun onBindViewHolder(holder: AppointmentsViewHolder, position: Int) {
@@ -25,12 +27,20 @@ class AppointmentsAdapter : ListAdapter<UiModel, AppointmentsViewHolder>(DiffUti
 }
 
 class AppointmentsViewHolder(
-    private val binding: ViewDataBinding
+    private val binding: ViewDataBinding,
+    private val callback: AppointmentsCallback
 ) : BaseViewHolder(binding) {
     override fun present(data: UiModel) {
         when (data) {
-            is Appointment -> binding.setVariable(BR.model, data)
+            is Appointment -> {
+                binding.setVariable(BR.model, data)
+                binding.setVariable(BR.callback, callback)
+            }
             else -> Unit
         }
     }
+}
+
+fun interface AppointmentsCallback {
+    fun onAppointmentClick(appointment: Appointment)
 }

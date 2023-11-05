@@ -3,6 +3,7 @@ package com.stathis.unipidoctor.navigation
 enum class NavigationAction {
     DASHBOARD,
     CALENDAR,
+    CHAT_CONVERSATION,
     PROFILE,
     UPLOAD_PHOTO,
     PHOTO_UPLOADED,
